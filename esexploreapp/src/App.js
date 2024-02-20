@@ -26,15 +26,15 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Group screenOptions={defaultScreenOptions}>
             <Stack.Screen
-              name="Glossary"
-              component={Glossary}
-              options={{ title: 'Glossary'}}
-            />
-            <Stack.Screen
               name="Creatures"
               component={Creatures}
               options={{ title: 'Creatures' }}
             />
+          <Stack.Screen
+            name="Glossary"
+            component={Glossary}
+            options={{ title: 'Glossary' }}
+          />
           </Stack.Group>
         </Stack.Navigator>
     </NavigationContainer>
@@ -65,4 +65,5 @@ const defaultScreenOptions = {
   },
   headerTintColor: 'white', // Color of the back button and other header tints
   animation: 'none', // Disable the animation
+  headerShown:false
 };

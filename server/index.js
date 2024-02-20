@@ -1,8 +1,10 @@
 import { getFirestore, collection, query, where, getDocs, setDoc, doc, updateDoc, FieldValue, increment } from 'firebase/firestore';
-import { firebaseConfig, app, db } from "../../constants/firebase";
-
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import express from 'express';
+import cors from "cors"
+const expressapp = express();
+expressapp.use(cors())
+const port = 3000;
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,22 +20,31 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-//const express = require("express");
-//const app = express();
-//const port = 3000;
+const db = getFirestore(app)
 
 
 
+async function get_names(path) {
+    var names = [];
+    const q = query(collection(db, path));
+    const docs = await getDocs(q);
+    docs.forEach((x) => {
+        names.push(x.data().name);
+    })
+    return names;
+}
 
-/*
-app.get("/creatures", (req, res) => {
 
+
+expressapp.get("/Creatures/AshCreatures/creatures/", (req, res) => {
+    get_names("Creatures/AshCreatures/creatures/").then((x) => {res.send(x)});
+})
+
+expressapp.get("/Creatures", (req, res) => {
+    get_names("Creatures/").then((x) => { res.send(x) });
 })
 
 
-
-app.listen(port, () => {
+expressapp.listen(port, "10.0.0.66", () => {
     console.log(`App is running on ${port}...`)
 })
-*/
