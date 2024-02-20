@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState, useEffect, useRef} from 'react';
-import { StyleSheet, Text, View, Button, Dimensions, ScrollView } from 'react-native';
+import { useState, useEffect} from 'react';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { useFonts, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import { fontSizes } from '../../consts/fontSizes';
 import Header from '../../Components/Header/Header';
@@ -21,7 +20,6 @@ const Creatures = (props, {navigation}) => {
         for (let i = 0; i < names.length; ++ i) {
             html.push(<ScrollButton key={i} text={names[i]}></ScrollButton>)
         }
-
         setButtonsData(html);
     }
 

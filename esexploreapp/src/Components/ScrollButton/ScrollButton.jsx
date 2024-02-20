@@ -1,7 +1,5 @@
-
 import { StyleSheet, Text, View, Button, Dimensions, TouchableOpacity } from 'react-native';
 import { colors } from '../../consts/colors';
-import { fontSizes } from '../../consts/fontSizes';
 import { useFonts, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 
 const ScrollButton = (props) => {
@@ -13,10 +11,7 @@ const ScrollButton = (props) => {
     if (!fontsLoaded && !fontError) {
         return null;
     }
-
-
-
-
+    
     return (
         <TouchableOpacity onPress={props.onPress}>
 

@@ -1,4 +1,4 @@
-import { FlatList, Image, SafeAreaView, ScrollView, Text, View } from "react-native";
+import { FlatList, Image, SafeAreaView,Text, View } from "react-native";
 import styles from "../../styles/styles";
 
 const Factions = () => {

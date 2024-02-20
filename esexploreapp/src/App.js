@@ -1,5 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useFonts, Poppins_600SemiBold  } from '@expo-google-fonts/poppins';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -8,8 +7,6 @@ import { enableScreens } from 'react-native-screens';
 import Glossary from './Pages/Glossary/Glossary';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Settings from './Pages/Settings/Settings';
-import Creatures from './Pages/Creatures/Creatures';
-import Test from './Components/Test/Test';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
