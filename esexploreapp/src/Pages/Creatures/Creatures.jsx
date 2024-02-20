@@ -9,18 +9,18 @@ import axios from "axios"
 import { urls, hostname, port } from '../../consts/nodeURLs';
 
 // TODO: URL for creatures view wil be dynamic. Could use props for this
-const Creatures = ({navigation}) => {
+const Creatures = (props, {navigation}) => {
     const get_names = () => {
         //axios.get(`${hostname}:${port}/${url}`).then(response => setNames(response.data()), x => alert(x.data()));
-        axios.get("http://10.0.0.66:3000/Creatures/AshCreatures/creatures").then(response => setNames(response.data), x => alert(x));
+        axios.get(`http://${hostname}:${port}${urls.creatureTypes}`).then(response => setNames(response.data), x => alert(x));
     }
 
     const load_buttons = () => {
         var html = [];
 
-        names.forEach((x) => {
-            html.push(<ScrollButton text={x}></ScrollButton>)
-        })
+        for (let i = 0; i < names.length; ++ i) {
+            html.push(<ScrollButton key={i} text={names[i]}></ScrollButton>)
+        }
 
         setButtonsData(html);
     }
@@ -69,8 +69,11 @@ const Creatures = ({navigation}) => {
    
     return (
         <View style={styles.mainPage}>
-            <Header text="creatures"/>
+            <Header text={props.header}/>
             <View style={styles.imgBox}>
+                <Text style={styles.bodyText}>
+                    {props.body}
+                </Text>
             </View>
             <View style={styles.scrollBox}>
                 <ScrollView style={{flexGrow:1}}>
@@ -98,11 +101,17 @@ const styles = StyleSheet.create({
         height:"25%",
         backgroundColor:"#E9DE9E",
         borderBottomLeftRadius:20,
-        borderBottomRightRadius: 20
+        borderBottomRightRadius: 20,
+        alignItems:"center"
         //height:"100%"
     },
     scrollBox: {
         paddingTop:10,
         flex:1
+    },
+    bodyText: {
+        fontFamily: "Poppins_600SemiBold",
+        width:"80%",
+        fontSize:fontSizes.bodySize
     }
 });

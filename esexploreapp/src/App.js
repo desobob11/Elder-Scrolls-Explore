@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Creatures from './Pages/Creatures/Creatures';
 import Glossary from './Pages/Glossary';
+import Test from './Components/Test/Test';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,9 +27,9 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Group screenOptions={defaultScreenOptions}>
             <Stack.Screen
-              name="Creatures"
-              component={Creatures}
-              options={{ title: 'Creatures' }}
+              name="Test"
+              component={Test}
+              options={{ title: 'Test' }}
             />
           <Stack.Screen
             name="Glossary"
