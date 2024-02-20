@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { useFonts, Poppins_600SemiBold  } from '@expo-google-fonts/poppins';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from './Pages/Home';
 import Creatures from './Pages/Creatures/Creatures';
+import Glossary from './Pages/Glossary';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,18 +23,20 @@ export default function App() {
   
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{animation:"none"}}>
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ title: 'Welcome' }}
-        />
-        <Stack.Screen
-          name="Creatures"
-          component={Creatures}
-          options={{ title: 'Welcome' }}
-        />
-      </Stack.Navigator>
+        <Stack.Navigator>
+          <Stack.Group screenOptions={defaultScreenOptions}>
+            <Stack.Screen
+              name="Glossary"
+              component={Glossary}
+              options={{ title: 'Glossary'}}
+            />
+            <Stack.Screen
+              name="Creatures"
+              component={Creatures}
+              options={{ title: 'Creatures' }}
+            />
+          </Stack.Group>
+        </Stack.Navigator>
     </NavigationContainer>
   );
 }
@@ -50,3 +52,17 @@ const styles = StyleSheet.create({
     fontFamily:"Poppins_600SemiBold"
   }
 });
+
+
+// Define your default styles for the header
+const defaultScreenOptions = {
+  headerStyle: {
+    backgroundColor: '#a3916f', // Your default background color
+  },
+  headerTitleStyle: {
+    color: 'white', // Your default title color
+    fontFamily: 'Poppins_600SemiBold', // Your default font family
+  },
+  headerTintColor: 'white', // Color of the back button and other header tints
+  animation: 'none', // Disable the animation
+};
