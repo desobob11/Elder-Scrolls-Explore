@@ -38,8 +38,10 @@ async function get_names(path) {
 
 expressapp.get("/Creatures/AshCreatures/creatures/", (req, res) => {
     get_names("Creatures/AshCreatures/creatures/").then((x) => {res.send(x)});
+})
 
-
+expressapp.get("/Creatures", (req, res) => {
+    get_names("Creatures/").then((x) => { res.send(x) });
 })
 
 
