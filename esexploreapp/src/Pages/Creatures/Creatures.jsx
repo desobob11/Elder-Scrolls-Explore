@@ -17,10 +17,6 @@ const Creatures = ({navigation}) => {
     }
 
 
-    
-    const swit = () => {
-        navigation.replace("Home", {name:"Home"})
-    }
     return (
         <View style={styles.mainPage}>
             <Header text="creatures"/>
