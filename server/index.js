@@ -1,3 +1,6 @@
+import { getFirestore, collection, query, where, getDocs, setDoc, doc, updateDoc, FieldValue, increment } from 'firebase/firestore';
+import { firebaseConfig, app, db } from "../../constants/firebase";
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -15,3 +18,22 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+//const express = require("express");
+//const app = express();
+//const port = 3000;
+
+
+
+
+/*
+app.get("/creatures", (req, res) => {
+
+})
+
+
+
+app.listen(port, () => {
+    console.log(`App is running on ${port}...`)
+})
+*/
