@@ -9,7 +9,7 @@ const Home = ({navigation}) => {
         navigation.replace("Creatures", { name: "Creatures"})
     }
     return (
-        <Button title="Hello" onPress={swit}>
+        <Button title="Hello">
         Hello
         </Button>
 

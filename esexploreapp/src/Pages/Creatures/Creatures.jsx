@@ -54,7 +54,6 @@ const Creatures = (props, {navigation}) => {
     }
 
 
-
     const buttons = (
         <ScrollView style={{ flexGrow: 1 }}>
             <ScrollButton text="" ></ScrollButton>
@@ -66,7 +65,7 @@ const Creatures = (props, {navigation}) => {
         </ScrollView>
     );
 
-   
+
     return (
         <View style={styles.mainPage}>
             <Header text={props.header}/>

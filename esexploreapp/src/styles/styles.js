@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   headerText: {
-    backgroundColor: 'White',
+    backgroundColor: 'white',
   },
 });
 

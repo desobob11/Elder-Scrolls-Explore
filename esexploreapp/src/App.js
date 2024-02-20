@@ -3,16 +3,19 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { useFonts, Poppins_600SemiBold  } from '@expo-google-fonts/poppins';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { enableScreens } from 'react-native-screens';
+import Glossary from './Pages/Glossary/Glossary';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import Settings from './Pages/Settings/Settings';
 import Creatures from './Pages/Creatures/Creatures';
-import Glossary from './Pages/Glossary';
 import Test from './Components/Test/Test';
 
 const Stack = createNativeStackNavigator();
-
+const Tab = createMaterialBottomTabNavigator();
+enableScreens();
 
 export default function App() {
-
-
 
   let [fontsLoaded, fontError] = useFonts({
     Poppins_600SemiBold,
@@ -24,20 +27,21 @@ export default function App() {
   
   return (
     <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Group screenOptions={defaultScreenOptions}>
-            <Stack.Screen
-              name="Test"
-              component={Test}
-              options={{ title: 'Test' }}
-            />
-          <Stack.Screen
+        <Tab.Navigator>
+          <Tab.Group screenOptions={defaultScreenOptions}>
+          <Tab.Screen
             name="Glossary"
             component={Glossary}
             options={{ title: 'Glossary' }}
           />
-          </Stack.Group>
-        </Stack.Navigator>
+          <Tab.Screen
+            name="Settings"
+            component={Settings}
+            options={{ title: 'Settings' }}
+          />
+          </Tab.Group>
+          
+        </Tab.Navigator>
     </NavigationContainer>
   );
 }
@@ -66,5 +70,5 @@ const defaultScreenOptions = {
   },
   headerTintColor: 'white', // Color of the back button and other header tints
   animation: 'none', // Disable the animation
-  headerShown:false
+  headerShown:true
 };
