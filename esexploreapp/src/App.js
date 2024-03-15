@@ -4,12 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { enableScreens } from 'react-native-screens';
-import Glossary from './Pages/Glossary/Glossary';
+import Glossary from './Pages/Article/Glossary';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Settings from './Pages/Settings/Settings';
 import Creatures from './Pages/Creatures/Creatures';
 import { urls } from './consts/nodeURLs';
-import Article from './Pages/Article/Article';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -30,11 +29,12 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Group screenOptions={{headerShown:false}}>
           <Stack.Screen
-            name="Article"
+            name="Glossary"
            // component={Creatures}
             //initialParams={{ url: urls.creatureTypes, header: "creatures", body:"Categories of beasts and bots that roam the Isle of Vvardenfell."}}
-            component={Article}
-            initialParams={{ url: urls.creatureTypes, header: "creatures", body:"Categories of beasts and bots that roam the Isle of Vvardenfell."}}
+            //component={Glossary}
+            //initialParams={{ url: urls['Ash Creatures'], header: "creatures", body:"Categories of beasts and bots that roam the Isle of Vvardenfell."}}
+            component={Glossary}
           />
         </Stack.Group>
       </Stack.Navigator>

@@ -3,6 +3,6 @@ export const urls = {
     "creatureTypes": "/Creatures"
 }
 
-export const hostname = "10.0.0.66"
+export const hostname = "10.0.0.21"
 
 export const port = 3000
