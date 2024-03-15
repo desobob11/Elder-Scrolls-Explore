@@ -37,7 +37,7 @@ async function get_names(path) {
 
 
 expressapp.get("/Creatures/AshCreatures/creatures/", (req, res) => {
-    get_names("Creatures/AshCreatures/creatures/").then((x) => {res.send(x)});
+    get_names("Creatures/AshCreatures/creatures/").then((x) => {res.send(x)}).then(console.log("Ash Creatures sent"));
 })
 
 expressapp.get("/Creatures", (req, res) => {
@@ -45,6 +45,6 @@ expressapp.get("/Creatures", (req, res) => {
 })
 
 
-expressapp.listen(port, "10.0.0.66", () => {
+expressapp.listen(port, "10.0.0.21", () => {
     console.log(`App is running on ${port}...`)
 })
