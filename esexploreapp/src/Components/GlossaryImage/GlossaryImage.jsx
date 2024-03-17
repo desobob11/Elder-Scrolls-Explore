@@ -13,7 +13,8 @@ const GlossaryImage = (props) => {
     }
     
     return (
-        <TouchableOpacity style={styles.opacity} onPress={props.onPress}>
+        <View style={styles.container}>
+        <TouchableOpacity delayPressIn={10} style={styles.opacity} onPress={props.onPress}>
 
         <View style={styles.base}>
             <Text style={styles.baseText}>
@@ -21,6 +22,7 @@ const GlossaryImage = (props) => {
             </Text>
         </View>
         </TouchableOpacity >
+        </View >
 
     );
 }
@@ -49,6 +51,10 @@ const styles = StyleSheet.create({
         width:"100%",
         height:"100%"
 
+    },
+    container: {
+        width:Dimensions.get("window").width,
+        height:"100%"
     }
 });
 

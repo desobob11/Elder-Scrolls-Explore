@@ -1,0 +1,1 @@
+export default glossaryCategories = [{id:0, name:"Creatures"}, {id:1, name:"Books"}]
