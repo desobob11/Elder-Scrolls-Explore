@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, Text, View, ScrollView, FlatList, Button } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, FlatList, Butto } from 'react-native';
 import { useFonts, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import { fontSizes } from '../../consts/fontSizes';
 import Header from '../../Components/Header/Header';
@@ -14,63 +14,68 @@ const Glossary = ({ route, navigation }) => {
     // get props from navigator
     const props = route.params;
 
-    const get_names = () => {
 
-    }
 
     const [names, setNames] = useState([]);
-    const [buttonsData, setButtonsData] = useState([]);
+    const [buttonsData, setButtonsData] = useState([
+        <ScrollButton key={0} text="" ></ScrollButton>,
+        <ScrollButton key={1} text="" ></ScrollButton>,
+        <ScrollButton key={2} text="" ></ScrollButton>,
+        <ScrollButton key={3} text="" ></ScrollButton>,
+        <ScrollButton key={4} text="" ></ScrollButton>,
+        <ScrollButton key={5} text="" ></ScrollButton>
+        ]
+    );
+    const [renderer, setRenderer] = useState(false);
 
-    const[currentCategory, setCurrentCategory] = useState(glossaryCategories[0]);
-    const [categoriesData, setCategoriesData] = useState({})
+    const [currentCategory, setCurrentCategory] = useState(glossaryCategories[0]);
+    const [categoryCache, setCategoryCache] = useState({});
 
     useEffect(() => {
-        if (names.length === 0) {
-            get_names();
+      //  get_category_items();   
+    }, [, currentCategory]);
+
+
+    const get_category_items = () => {
+       // console.log(categoryCache[currentCategory.name]);
+       console.log(`FIRST TIME ${currentCategory.name}`);
+        if (categoryCache[currentCategory.name] === undefined) {
+            axios.get(`http://${hostname}:${port}/${currentCategory.name}`).then((response) => {    
+                var html = [];
+
+                for (let i = 0; i < response.data.length; ++i) {
+    
+                    html.push(<ScrollButton key={i} text={response.data[i]}></ScrollButton>)
+                }
+                var updated = categoryCache;
+                updated[currentCategory.name] = html;
+                setCategoryCache(updated);
+                setButtonsData(html);
+            }, 
+            x => alert(x));
         }
-        if (names.length > 0) {
-            load_buttons();
+        else {
+            console.log(currentCategory.name);
+            console.log("here")
+            setButtonsData(categoryCache[currentCategory.name]);
         }
-        alert(currentCategory.name);
-    }, [, names, currentCategory]);
+    }
+
 
     const get_selected_category = ({viewableItems}) => {
         if (viewableItems.length === 1) {
-            //console.log(viewableItems[0].item);
             setCurrentCategory(viewableItems[0].item);
         }
     }
-
 
     let [fontsLoaded, fontError] = useFonts({
         Poppins_600SemiBold,
     })
 
 
-
-
-
     if (!fontsLoaded && !fontError) {
         return null;
     }
-
-
-    const categoriesDefault = (
-        [{id:0, text:""}]
-    );
-
-    const buttons = (
-        <ScrollView style={{ flexGrow: 1 }}>
-            <ScrollButton text="" ></ScrollButton>
-            <ScrollButton text="" ></ScrollButton>
-            <ScrollButton text="" ></ScrollButton>
-            <ScrollButton text="" ></ScrollButton>
-            <ScrollButton text="" ></ScrollButton>
-            <ScrollButton text="" ></ScrollButton>
-        </ScrollView>
-    );
-
-
 
 
     return (
@@ -80,10 +85,7 @@ const Glossary = ({ route, navigation }) => {
             <FlatList 
                 data={glossaryCategories}
                 horizontal
-    //            onMomentumScrollEnd={({item, item2}) => alert(item)}
-    
                 onViewableItemsChanged={get_selected_category}
-    
                 contentOff
                 showsHorizontalScrollIndicator={false}
                 renderItem={({item})=> <GlossaryImage text={item.name} style={{flex:1}}></GlossaryImage>}
@@ -95,7 +97,7 @@ const Glossary = ({ route, navigation }) => {
             <View style={styles.scrollBox}>
                 <ScrollView style={{ flexGrow: 1 }}>
 
-                    {buttons && names.length === 0 ? buttons : buttonsData}
+                    {buttonsData}
 
                 </ScrollView>
             </View>
@@ -116,7 +118,7 @@ const styles = StyleSheet.create({
         flex:1
     },
     imgBox: {
-        height: "25%",
+        height: "30%",
         width:"100%",
         backgroundColor: "#E9DE9E",
         borderBottomLeftRadius: 20,

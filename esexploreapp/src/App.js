@@ -9,6 +9,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Settings from './Pages/Settings/Settings';
 import Creatures from './Pages/Creatures/Creatures';
 import { urls } from './consts/nodeURLs';
+import ListPage from './Pages/ListPage/ListPage';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -33,8 +34,8 @@ export default function App() {
            // component={Creatures}
             //initialParams={{ url: urls.creatureTypes, header: "creatures", body:"Categories of beasts and bots that roam the Isle of Vvardenfell."}}
             //component={Glossary}
-            //initialParams={{ url: urls['Ash Creatures'], header: "creatures", body:"Categories of beasts and bots that roam the Isle of Vvardenfell."}}
-            component={Glossary}
+            initialParams={{ url: urls['Ash Creatures'], header: "creatures", body:"Categories of beasts and bots that roam the Isle of Vvardenfell."}}
+            component={ListPage}
           />
         </Stack.Group>
       </Stack.Navigator>

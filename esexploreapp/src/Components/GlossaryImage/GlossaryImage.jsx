@@ -16,7 +16,7 @@ const GlossaryImage = (props) => {
         <View style={styles.container}>
         <TouchableOpacity delayPressIn={10} style={styles.opacity} onPress={props.onPress}>
 
-        <View style={styles.base}>
+        <View style={styles.base} borderRadius={10}>
             <Text style={styles.baseText}>
                 {props.text}
             </Text>
@@ -33,19 +33,26 @@ export default GlossaryImage;
 const styles = StyleSheet.create({
     base: {
         backgroundColor: colors.offWhite,
-        height:"100%",
-        width:"90%",
-        alignSelf:"center",
-        borderRadius:20,
-        justifyContent:"center",
-        alignItems:"center",
-        marginBottom:10
+        height: "90%",
+        width: "90%",
+        alignSelf: "center",
+        borderRadius: 20,
+        justifyContent:"flex-end",
+        alignItems: "right",
+        marginBottom: 10
     },
     baseText: {
-        fontFamily:"Poppins_600SemiBold",
-        textAlign:"center",
-        textAlignVertical:"center",
-        fontSize:24
+        backgroundColor:colors.glossaryImageText,
+        fontFamily: "Poppins_600SemiBold",
+        textAlign: "center",
+        textAlignVertical: "bottom",
+        flexBasis: "",
+        fontSize: 24,
+        width:"40%",
+        marginLeft:"50%",
+        marginBottom:"10%",
+        overflow:"hidden",
+        borderRadius:10
     },
     opacity: {
         width:"100%",

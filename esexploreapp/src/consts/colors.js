@@ -1,3 +1,4 @@
 export const colors = {
-    offWhite : "#cbcbcb"
+    offWhite : "#cbcbcb",
+    glossaryImageText:"white"
 }
