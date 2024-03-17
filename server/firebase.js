@@ -36,8 +36,4 @@ async function get_names(path) {
     return names;
 }
 
-//expressapp.get("/glossary"), (req, res) => {
-get_names("Books").then(x => console.log(x));
-
-//}
-
+get_names("Creatures").then(x => console.log(x));

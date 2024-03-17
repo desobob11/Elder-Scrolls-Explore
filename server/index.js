@@ -45,7 +45,11 @@ expressapp.get("/Creatures/AshCreatures/creatures/", (req, res) => {
 })
 
 expressapp.get("/Creatures", (req, res) => {
-    get_names("Creatures/").then((x) => { res.send(x) });
+    get_names("Creatures").then((x) => { res.send(x) });
+})
+
+expressapp.get("/Books", (req, res) => {
+    get_names("Books").then((x) => { res.send(x) });
 })
 
 
