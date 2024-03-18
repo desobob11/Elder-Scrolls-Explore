@@ -34,9 +34,16 @@ export default function App() {
            // component={Creatures}
             //initialParams={{ url: urls.creatureTypes, header: "creatures", body:"Categories of beasts and bots that roam the Isle of Vvardenfell."}}
             //component={Glossary}
-            initialParams={{ url: urls['Ash Creatures'], header: "creatures", body:"Categories of beasts and bots that roam the Isle of Vvardenfell."}}
-            component={ListPage}
+           // initialParams={{ url: urls['Ash Creatures'], header: "creatures", body:"Categories of beasts and bots that roam the Isle of Vvardenfell."}}
+            initialParams={{path:""}}
+            component={Glossary}
           />
+          <Stack.Screen
+          name="ListPage"
+          component={ListPage}
+          >
+
+          </Stack.Screen>
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

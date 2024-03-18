@@ -28,16 +28,30 @@ const ListPage = ({ route, navigation }) => {
         setButtonsData(html);
     }
 
+
+    const test_post = () => {
+        console.log("hello");
+        axios.post(`http://${hostname}:${port}${"/Pathnames"}`, {path:"/testing"}).then(x => console.log(x), x => console.log(x));
+        //axios.get(`http://${hostname}:${port}${"/Creatures"}`).then(response => console.log(response.data), x => console.log(x));
+    }
+
     const [names, setNames] = useState([]);
-    const [buttonsData, setButtonsData] = useState([]);
+    const [buttonsData, setButtonsData] = useState([
+        <ScrollButton key={0} onPress={test_post} text="" ></ScrollButton>,
+        <ScrollButton key={1} text="" ></ScrollButton>,
+        <ScrollButton key={2} text="" ></ScrollButton>,
+        <ScrollButton key={3} text="" ></ScrollButton>,
+        <ScrollButton key={4} text="" ></ScrollButton>,
+        <ScrollButton key={5} text="" ></ScrollButton>
+        ]);
 
     useEffect(() => {
-        if (names.length === 0) {
-            get_names();
-        }
-        if (names.length > 0) {
-            load_buttons();
-        }
+      //  if (names.length === 0) {
+      //      get_names();
+       // }
+       // if (names.length > 0) {
+       //     load_buttons();
+       // }
 
 
     }, [, names]);
@@ -80,7 +94,7 @@ const ListPage = ({ route, navigation }) => {
             <View style={styles.scrollBox}>
                 <ScrollView style={{ flexGrow: 1 }}>
 
-                    {buttons && names.length === 0 ? buttons : buttonsData}
+                {buttonsData}
 
                 </ScrollView>
             </View>

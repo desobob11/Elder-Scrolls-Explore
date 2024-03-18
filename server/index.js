@@ -5,6 +5,7 @@ import express from 'express';
 import cors from "cors"
 const expressapp = express();
 expressapp.use(cors())
+expressapp.use(express.json())
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -44,12 +45,18 @@ expressapp.get("/Creatures/AshCreatures/creatures/", (req, res) => {
     get_names("Creatures/AshCreatures/creatures/").then((x) => {res.send(x)}).then(console.log("Ash Creatures sent"));
 })
 
+
+expressapp.post("/Pathnames", (req, res) => {
+    console.log(req.body.path);
+})
+
 expressapp.get("/Creatures", (req, res) => {
+    console.log("creatures");
     get_names("Creatures").then((x) => { res.send(x) });
 })
 
 expressapp.get("/Books", (req, res) => {
-    get_names("Books").then((x) => { res.send(x) });
+   get_names("Books").then((x) => { res.send(x) });
 })
 
 

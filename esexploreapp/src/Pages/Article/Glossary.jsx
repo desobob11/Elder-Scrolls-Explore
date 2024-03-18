@@ -32,7 +32,7 @@ const Glossary = ({ route, navigation }) => {
     const [categoryCache, setCategoryCache] = useState({});
 
     useEffect(() => {
-      //  get_category_items();   
+        get_category_items();   
     }, [, currentCategory]);
 
 
@@ -45,7 +45,13 @@ const Glossary = ({ route, navigation }) => {
 
                 for (let i = 0; i < response.data.length; ++i) {
     
-                    html.push(<ScrollButton key={i} text={response.data[i]}></ScrollButton>)
+                    html.push(<ScrollButton key={i}
+                         path={`${props.path}/${currentCategory.name}/${response.data[i]}/${currentCategory.name}`} 
+                         text={response.data[i]}
+                         onPress={() => {navigation.navigate("ListPage", {
+                             header: currentCategory.name, body: response.data[i], url: `${props.path}/${currentCategory.name}/${response.data[i]}/${currentCategory.name}`
+                         })}}
+                         ></ScrollButton>)
                 }
                 var updated = categoryCache;
                 updated[currentCategory.name] = html;
@@ -80,7 +86,7 @@ const Glossary = ({ route, navigation }) => {
 
     return (
         <View style={styles.mainPage}>
-            <Header text={""} />
+            <Header text={"glossary"} />
             <View style={styles.imgBox}>
             <FlatList 
                 data={glossaryCategories}

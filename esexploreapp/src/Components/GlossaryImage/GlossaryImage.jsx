@@ -14,7 +14,7 @@ const GlossaryImage = (props) => {
     
     return (
         <View style={styles.container}>
-        <TouchableOpacity delayPressIn={10} style={styles.opacity} onPress={props.onPress}>
+        <TouchableOpacity activeOpacity={1} style={styles.opacity} onPress={props.onPress}>
 
         <View style={styles.base} borderRadius={10}>
             <Text style={styles.baseText}>
