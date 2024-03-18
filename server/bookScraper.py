@@ -49,7 +49,7 @@ for i in rows[1:-1]:
             author = author.text
         descr = tds[4].text
 
-        doc = {"author":author, "price":price, "title":title, "img":img, "lore":descr}
+        doc = {"author":author, "price":price, "name":title, "img":img, "lore":descr}
         cli.collection(rf"Books").document(author).set({"name":author})
         cli.collection(rf"Books/{author}/Books").document(title).set(doc)
         print(title + " done")

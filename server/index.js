@@ -41,13 +41,9 @@ async function get_names(path) {
 //    get_names("/Books").then((x) => { res.send(x) }).then(console.log("Glossary categories sent"));
 //}
 
-expressapp.get("/Creatures/AshCreatures/creatures/", (req, res) => {
-    get_names("Creatures/AshCreatures/creatures/").then((x) => {res.send(x)}).then(console.log("Ash Creatures sent"));
-})
-
 
 expressapp.post("/Pathnames", (req, res) => {
-    console.log(req.body.path);
+    get_names(req.body.path).then((x) => { res.send(x) }).then(console.log("hello"));
 })
 
 expressapp.get("/Creatures", (req, res) => {

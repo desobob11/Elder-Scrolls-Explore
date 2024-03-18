@@ -38,7 +38,6 @@ const Glossary = ({ route, navigation }) => {
 
     const get_category_items = () => {
        // console.log(categoryCache[currentCategory.name]);
-       console.log(`FIRST TIME ${currentCategory.name}`);
         if (categoryCache[currentCategory.name] === undefined) {
             axios.get(`http://${hostname}:${port}/${currentCategory.name}`).then((response) => {    
                 var html = [];
@@ -62,7 +61,6 @@ const Glossary = ({ route, navigation }) => {
         }
         else {
             console.log(currentCategory.name);
-            console.log("here")
             setButtonsData(categoryCache[currentCategory.name]);
         }
     }

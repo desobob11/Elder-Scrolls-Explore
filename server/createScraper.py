@@ -13,7 +13,7 @@ cli = firestore.Client(project="esexplore-9fc9f")
 #ash_collection = cli.collection("Creatures/AshCreatures/creatures")
 
 
-collections = ["Dwemer_Centurions", "Undead"]
+collections = ["Ash Creatures", "Beasts", "Daedra", "Dwemer Centurions", "Kwama", "Special Creatures", "Undead"]
 
 
 
@@ -47,10 +47,10 @@ for coll in collections:
 
             objs[name]["lore"] = i.find_next("p").text
             objs[name]["img"] = img_data
-        except:
-            pass
+        except Exception as e:
+            print(str(e))
 
     for i in objs.keys():
-        cli.collection(rf"Creatures/{no_under}/creatures").document(i).set(objs[i])
+        cli.collection(rf"Creatures/{no_under}/Creatures").document(i).set(objs[i])
 
 

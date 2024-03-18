@@ -16,7 +16,8 @@ const ListPage = ({ route, navigation }) => {
 
     const get_names = () => {
         //axios.get(`${hostname}:${port}/${url}`).then(response => setNames(response.data()), x => alert(x.data()));
-        axios.get(`http://${hostname}:${port}${props.url}`).then(response => setNames(response.data), x => alert(x));
+        console.log(props.url);
+        axios.post(`http://${hostname}:${port}${"/Pathnames"}`, {path:props.url}).then((response) => {setNames(response.data); console.log(response.data)}, x => alert(x));
     }
 
     const load_buttons = () => {
@@ -30,8 +31,8 @@ const ListPage = ({ route, navigation }) => {
 
 
     const test_post = () => {
-        console.log("hello");
-        axios.post(`http://${hostname}:${port}${"/Pathnames"}`, {path:"/testing"}).then(x => console.log(x), x => console.log(x));
+     //   console.log("hello");
+      //  axios.post(`http://${hostname}:${port}${"/Pathnames"}`, {path:"/testing"}).then(x => console.log(x), x => console.log(x));
         //axios.get(`http://${hostname}:${port}${"/Creatures"}`).then(response => console.log(response.data), x => console.log(x));
     }
 
@@ -46,14 +47,13 @@ const ListPage = ({ route, navigation }) => {
         ]);
 
     useEffect(() => {
-      //  if (names.length === 0) {
-      //      get_names();
-       // }
-       // if (names.length > 0) {
-       //     load_buttons();
-       // }
-
-
+        if (names.length === 0) {
+            get_names();
+        }
+        if (names.length > 0) {
+            load_buttons();
+        }
+        console.log(names);
     }, [, names]);
 
 
@@ -71,16 +71,7 @@ const ListPage = ({ route, navigation }) => {
     }
 
 
-    const buttons = (
-        <ScrollView style={{ flexGrow: 1 }}>
-            <ScrollButton text="" ></ScrollButton>
-            <ScrollButton text="" ></ScrollButton>
-            <ScrollButton text="" ></ScrollButton>
-            <ScrollButton text="" ></ScrollButton>
-            <ScrollButton text="" ></ScrollButton>
-            <ScrollButton text="" ></ScrollButton>
-        </ScrollView>
-    );
+
 
 
     return (
