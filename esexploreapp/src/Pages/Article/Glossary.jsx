@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Icon } from 'react';
 import { StyleSheet, Text, View, ScrollView, FlatList, Butto } from 'react-native';
 import { useFonts, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
+import { colors } from '../../consts/colors';
 import { fontSizes } from '../../consts/fontSizes';
 import Header from '../../Components/Header/Header';
 import ScrollButton from '../../Components/ScrollButton/ScrollButton';
@@ -8,6 +9,7 @@ import axios from "axios"
 import { urls, hostname, port } from '../../consts/nodeURLs';
 import GlossaryImage from '../../Components/GlossaryImage/GlossaryImage';
 import glossaryCategories from '../../consts/glossaryCategories';
+import SearchBarCustom from '../../Components/SearchBar/SearchBar';
 
 // TODO: URL for creatures view wil be dynamic. Could use props for this
 const Glossary = ({ route, navigation }) => {
@@ -48,7 +50,7 @@ const Glossary = ({ route, navigation }) => {
                          path={`${props.path}/${currentCategory.name}/${response.data[i]}/${currentCategory.name}`} 
                          text={response.data[i]}
                          onPress={() => {navigation.navigate("ListPage", {
-                             header: currentCategory.name, body: response.data[i], url: `${props.path}/${currentCategory.name}/${response.data[i]}/${currentCategory.name}`
+                             header: currentCategory.name.toLowerCase(), body: response.data[i], url: `${props.path}/${currentCategory.name}/${response.data[i]}/${currentCategory.name}`
                          })}}
                          ></ScrollButton>)
                 }
@@ -98,6 +100,9 @@ const Glossary = ({ route, navigation }) => {
                             >
             </FlatList>
             </View>
+            <SearchBarCustom>
+                
+            </SearchBarCustom>
             <View style={styles.scrollBox}>
                 <ScrollView style={{ flexGrow: 1 }}>
 
@@ -116,7 +121,7 @@ export default Glossary;
 
 const styles = StyleSheet.create({
     mainPage: {
-        backgroundColor: "#A3916F",
+        backgroundColor:colors.morrowind_gold,
         height: "100%",
         width: "100%",
         flex:1
@@ -124,7 +129,7 @@ const styles = StyleSheet.create({
     imgBox: {
         height: "30%",
         width:"100%",
-        backgroundColor: "#E9DE9E",
+        backgroundColor: colors.morrowind_gold_deep,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20
         //height:"100%"

@@ -32,7 +32,7 @@ export default GlossaryImage;
 
 const styles = StyleSheet.create({
     base: {
-        backgroundColor: colors.offWhite,
+        backgroundColor: colors.morrowind_gold,
         height: "90%",
         width: "90%",
         alignSelf: "center",
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     baseText: {
-        backgroundColor:colors.glossaryImageText,
+        backgroundColor:colors.morrowind_gold_deep,
         fontFamily: "Poppins_600SemiBold",
         textAlign: "center",
         textAlignVertical: "bottom",
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
         marginLeft:"50%",
         marginBottom:"10%",
         overflow:"hidden",
-        borderRadius:10
+        borderRadius:10,
+        color:colors.morrowing_white
     },
     opacity: {
         width:"100%",

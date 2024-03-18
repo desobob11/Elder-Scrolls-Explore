@@ -30,7 +30,7 @@ export default ScrollButton;
 
 const styles = StyleSheet.create({
     base: {
-        backgroundColor: colors.offWhite,
+        backgroundColor: colors.morrowind_gold_deep,
         height:80,
         width:"90%",
         alignSelf:"center",
@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
         textAlign:"center",
         textAlignVertical:"center",
         flexBasis:"",
-        fontSize:24
+        fontSize:24,
+        color:colors.morrowing_white
     }
 });
 

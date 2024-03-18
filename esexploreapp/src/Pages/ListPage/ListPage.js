@@ -6,6 +6,7 @@ import Header from '../../Components/Header/Header';
 import ScrollButton from '../../Components/ScrollButton/ScrollButton';
 import axios from "axios"
 import { urls, hostname, port } from '../../consts/nodeURLs';
+import { colors } from '../../consts/colors';
 
 // TODO: URL for creatures view wil be dynamic. Could use props for this
 const ListPage = ({ route, navigation }) => {
@@ -100,13 +101,13 @@ export default ListPage;
 
 const styles = StyleSheet.create({
     mainPage: {
-        backgroundColor: "#A3916F",
+        backgroundColor: colors.morrowind_gold,
         height: "100%",
         width: "100%",
     },
     imgBox: {
         height: "25%",
-        backgroundColor: "#E9DE9E",
+        backgroundColor: colors.morrowind_gold_deep,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
         alignItems: "center"
@@ -119,6 +120,7 @@ const styles = StyleSheet.create({
     bodyText: {
         fontFamily: "Poppins_600SemiBold",
         width: "80%",
-        fontSize: fontSizes.bodySize
+        fontSize: fontSizes.bodySize,
+        color:colors.morrowing_white
     }
 });
